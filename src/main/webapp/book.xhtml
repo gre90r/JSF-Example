@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+   <title>Book Service</title>
+</h:head>
+
+<h:body>
+  	<h1>Book Service</h1>
+  	
+  	<h2>Add a new book</h2>
+	<h:form>
+		<h:outputLabel for="bookName">
+			<h:outputText value="name" />
+		</h:outputLabel>
+		<h:inputText id="bookName" value="#{book.name}" />
+		
+		<br/>
+		<br/>
+		
+		<h:outputLabel for="bookAuthor">
+			<h:outputText value="author" />
+		</h:outputLabel>
+		<h:inputText id="bookAuthor" value="#{book.author}" />
+		
+		<br/>
+		<br/>
+		
+		<h:commandButton id="buttonAddNewBook" value="add book" action="#{bookService.add(book)}" />
+		
+	</h:form>
+	
+	<h2>Book list</h2>
+	<ul>
+		<ui:repeat value="#{bookService.books}" var="book">
+			<div>
+				{
+				<span>id=#{book.id}, </span>
+				<span>name=#{book.name}, </span>
+				<span>author=#{book.author}</span>
+				}
+			</div>
+		</ui:repeat>
+	</ul>
+</h:body>
+
+</html>
